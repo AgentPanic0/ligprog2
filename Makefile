@@ -5,7 +5,7 @@ LD = g++
 CFLAGS = -Wall -std=c++11
 LFLAGS = -Wall
 
-TRAB2OBJS = main.o
+TRAB2OBJS = main.o vertice.o aresta.o grafo.o
 
 TRABALHOS = ./execTrab2
 

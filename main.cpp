@@ -14,6 +14,7 @@ int main (int argc, char *argv[])
     string noInicial, noFinal, peso;
     vector <Vertice> nosExistes;
     Grafo grafo("Proximidade dos alunos");
+    unsigned idI, idF;
 
     int opcao = 0;
 
@@ -75,13 +76,6 @@ int main (int argc, char *argv[])
         grafo.inserirAresta(grafo.getVertice(idI), grafo.getVertice(idF), stof(peso));
     }
 
-    //DEBUGADOR
-    for (unsigned i = 0; i < grafo.getQuantidadeVertice(); i++)
-    {
-        //cout << grafo.getVertice(i).getArestas() << grafo.getVertice(i).getNome() <<  grafo.getVertice(i).getId() << endl;
-        //cout << grafo.getAresta(i).getPeso() << grafo.getAresta(i).getNoInicial().getNome() <<  grafo.getAresta(i).getNoFinal().getNome() << endl;
-    }
-
     file.close();
     
     cout << endl;
@@ -97,8 +91,8 @@ int main (int argc, char *argv[])
         cout << setw(18) << "MENU" << endl;
         cout << "Digite o numero da opcao de deseja:" << endl;
         cout << left << setw(25) << "1.Enlaces por No" << left << setw(25) << "2.Matriz de adjacencia" << endl;
-        cout << left << setw(25) << "3.Desempenho anual" << left << setw(25) << "4.Maior saldo campeonato" << endl;
-        cout << left << setw(25) << "5.Maior evolucao" << left << setw(25) << "6.Sair" << endl;
+        cout << left << setw(25) << "3.Menor caminho" << left << setw(25) << "4.Totalmente conectado" << endl;
+        cout << left << setw(25) << "5.Maior grau" << left << setw(25) << "6.Sair" << endl;
         cout << endl;
 
         cout << "Digite aqui:";
@@ -120,32 +114,55 @@ int main (int argc, char *argv[])
                 break;
 
             case 3:
-                cout << "Desempenho dos times no ano atual em relacao ao ano anterior:\n" << endl;
-                //liga.getDesempenhoTotal(0);
-
-                break;
-
-             case 4:
-                cout << "Digite o numero referente a opcao de campeonato que deseja:" << endl;
-                //liga.getCampeonatos();
+                idI = grafo.getQuantidadeVertice();
+                cout << "Digite o numero referente a opcao do vertice inicial:" << endl;
+                for (unsigned i = 0; i < grafo.getQuantidadeVertice(); i++)
+                {
+                    cout << i << ". " << grafo.getVertice(i).getNome() << endl;
+                }
                 cout << endl;
                 cout << "Digite aqui:";
-                //cin >>a;
+                cin >> idI;
                 cout << endl;
 
                 //validacao
-                /*if(a>liga.getQuantidadeCampeonatos()-1 )
+                if(idI>grafo.getQuantidadeVertice()-1 )
+                {
+                    cout << "\nOpcao invalida!!\n" << endl;
+                    break;
+                }
+                
+
+                idF = grafo.getQuantidadeVertice();
+                cout << "Digite o numero referente a opcao do vertice final:" << endl;
+                for (unsigned i = 0; i < grafo.getQuantidadeVertice(); i++)
+                {
+                    cout << i << ". " << grafo.getVertice(i).getNome() << endl;
+                }
+                cout << endl;
+                cout << "Digite aqui:";
+                cin >> idF;
+                cout << endl;
+
+                //validacao
+                if(idI>grafo.getQuantidadeVertice()-1 )
                 {
                     cout << "\nOpcao invalida!!\n" << endl;
                     break;
                 }
 
-                liga.getMaxSaldoCamp(a);
+                grafo.mostrarMenorCaminho(idI, idF);
 
-                */break;
+                break;
+
+             case 4:
+
+                grafo.mostrarTotalmenteConectado();
+
+                break;
 
              case 5:
-                //liga.getMaiorEvolucao(0);
+                grafo.mostrarMaiorGrau();
                 break;
 
             case 6:

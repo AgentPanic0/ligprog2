@@ -13,16 +13,20 @@ class Grafo
         void inserirVertice(string);
 
         string getNome();
-        Aresta& getAresta(unsigned);
+        Aresta& getAresta(unsigned, unsigned);
         Vertice& getVertice(unsigned);
         unsigned getQuantidadeVertice();
-         unsigned getQuantidadeAresta();
+        unsigned getQuantidadeAresta();
 
         void mostrarVerticeAresta();
         void mostrarMatrizAdjacencia();
-
+        void mostrarMenorCaminho(unsigned, unsigned);
+        void mostrarTotalmenteConectado();
+        void mostrarMaiorGrau();
+        
     private:
         vector <vector <float>> matrizAdjacencia();
+        vector < vector <Aresta>>  menoresCaminhos( unsigned);
 
         vector <Aresta> arestas;
         vector <Vertice> vertices;

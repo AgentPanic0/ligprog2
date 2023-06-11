@@ -1,8 +1,9 @@
 Compilacao:
-<g++ -Wall main.cpp time.cpp liga.cpp -o execTrab1> ou <make all> ou <make execTrab1>
+<g++ -Wall -std=c++11 main.cpp vertice.cpp aresta.cpp grafo.cpp -o execTrab2> ou <make all> ou <make execTrab2>
 
 Execucao:
-<.\execTrab1.exe>
+<.\execTrab2 <nomeArquivo.txt> >
+nomeArquivo.txt = bancoDados.txt
 
 Utilizacao:
 Programa intuitivo basta ler e interagir, digitando no teclado e pressionado enter.

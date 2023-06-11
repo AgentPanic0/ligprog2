@@ -9,6 +9,7 @@ class Aresta
 
         Vertice getNoInicial();
         Vertice getNoFinal();
+        Vertice getNoComplementar(unsigned);
         float getPeso();
 
     private:
